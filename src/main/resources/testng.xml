@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suites>
+    <suite name = "sdk">
+        <tests>
+            <groups>
+                <run>
+                    <exclude name="exclude"  />
+                    <!--<include name="SbankTest"  />-->
+                </run>
+            </groups>
+            <test name="transferEOA">
+                <classes>
+                    <class name="com.tests.transferEoa.Demo" />
+                </classes>
+            </test>
+        </tests>
+    </suite>
+
+
+    <listeners>
+        <!--<listener class-name="com.vimalselvam.testng.listener.ExtentTestNgFormatter"/>-->
+    </listeners>
+</suites>

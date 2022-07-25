@@ -10,7 +10,7 @@
             </groups>
             <test name="transferEOA">
                 <classes>
-                    <class name="com.tests.transferEoa.Demo2" />
+                    <class name="com.tests.transferEoa.Demo" />
                 </classes>
             </test>
         </tests>

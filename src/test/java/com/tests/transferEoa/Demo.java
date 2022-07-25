@@ -12,9 +12,9 @@ import utils.CredentialsUtil;
 
 import java.math.BigInteger;
 
-@Slf4j
 public class Demo extends Common {
 
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(Demo.class);
 
     /**
      * demo

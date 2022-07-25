@@ -1,7 +1,6 @@
 package common;
 
 import contracts.GodwokenERC20;
-import lombok.extern.slf4j.Slf4j;
 import model.GodwokenProperties;
 import model.Web3GasProvider;
 import org.web3j.crypto.Credentials;
@@ -14,7 +13,6 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
 public class GodwokenClient {
 
     private Web3j web3;

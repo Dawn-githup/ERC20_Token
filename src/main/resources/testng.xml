@@ -19,6 +19,5 @@
 
     <listeners>
         <!--<listener class-name="com.vimalselvam.testng.listener.ExtentTestNgFormatter"/>-->
-        <listener class-name="cn.hyperchain.TestngListener"/>
     </listeners>
 </suites>

@@ -19,6 +19,7 @@ public class GodwokenClient {
     private List<Credentials> credentialsArrays;
     private static String DefaultPath = "./Godwoken.properties";
     private static GodwokenClient godwokenClientInstance;
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(GodwokenClient.class);
 
 
     //todo : lazy load
@@ -73,7 +74,8 @@ public class GodwokenClient {
         try {
             godwokenERC20.transfer(to, value).send();
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            log.info("from id not found by from Address");
         }
     }
 

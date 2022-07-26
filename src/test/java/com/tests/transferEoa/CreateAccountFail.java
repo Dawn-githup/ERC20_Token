@@ -2,7 +2,6 @@ package com.tests.transferEoa;
 
 import com.tests.Common;
 import constant.Constant;
-import lombok.extern.slf4j.Slf4j;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.web3j.crypto.Credentials;
@@ -10,22 +9,25 @@ import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.DefaultBlockParameterName;
 import utils.CredentialsUtil;
 
+import java.awt.event.WindowFocusListener;
 import java.math.BigInteger;
 
-public class Demo extends Common {
+/**
+ * 1. @description: Account creation failed transaction failed
+ * 2. @author: Dawn
+ * 3. @time: 2022/7/26
+ */
+public class CreateAccountFail extends Common {
 
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(Demo.class);
 
-    /**
-     * demo
-     * @throws Exception
-     */
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(CreateAccountFail.class);
+
     @Test
-    public void demo() throws Exception{
+    public void CreateAccountTest() throws Exception{
         Web3j web3j = getGodwokenClient().getWeb3();
 
         Credentials credentials1 = getGodwokenClient().getCredentialsByIdx(0);
-        BigInteger sendBalanceBefore = web3j.ethGetBalance(credentials1.getAddress(),DefaultBlockParameterName.PENDING).send().getBalance();
+        BigInteger sendBalanceBefore = web3j.ethGetBalance(credentials1.getAddress(), DefaultBlockParameterName.PENDING).send().getBalance();
         log.info("{}  transfer balance before :{}",credentials1.getAddress(),sendBalanceBefore);
         log.info("transfer  balance to new Account ");
         Credentials newAccount = CredentialsUtil.createAccount();
@@ -34,9 +36,5 @@ public class Demo extends Common {
         log.info("new Account:{} Balance:{}",newAccount.getAddress(),blanceForNewAccount);
         log.info("new Account can transfer without register");
         getGodwokenClient().transferCkb(newAccount,credentials1.getAddress(),Constant.ETHER.divide(new BigInteger("2")));
-        log.info("check new Account transfer successful ");
-        blanceForNewAccount = web3j.ethGetBalance(newAccount.getAddress(), DefaultBlockParameterName.PENDING).send().getBalance();
-        log.info("after transfer new Account:{} Balance:{}",newAccount.getAddress(),blanceForNewAccount);
-        Assert.assertTrue(blanceForNewAccount.compareTo(Constant.ETHER.divide(new BigInteger("2")))<0);
     }
 }

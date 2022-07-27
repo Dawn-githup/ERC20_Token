@@ -2,7 +2,6 @@ package com.tests.transferEoa;
 
 import com.tests.Common;
 import constant.Constant;
-import lombok.extern.slf4j.Slf4j;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.web3j.crypto.Credentials;
@@ -12,24 +11,23 @@ import utils.CredentialsUtil;
 
 import java.math.BigInteger;
 
-public class Demo extends Common {
-
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(Demo.class);
-
-    /**
-     * demo
-     * @throws Exception
-     */
+/**
+ * 1. @description: Automatic registration account transfer succeeded
+ * 2. @author: Dawn
+ * 3. @time: 2022/7/27
+ */
+public class TransferSuccessful extends Common {
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(TransferSuccessful.class);
     @Test
     public void demo() throws Exception{
         Web3j web3j = getGodwokenClient().getWeb3();
 
         Credentials credentials1 = getGodwokenClient().getCredentialsByIdx(0);
-        BigInteger sendBalanceBefore = web3j.ethGetBalance(credentials1.getAddress(),DefaultBlockParameterName.PENDING).send().getBalance();
+        BigInteger sendBalanceBefore = web3j.ethGetBalance(credentials1.getAddress(), DefaultBlockParameterName.PENDING).send().getBalance();
         log.info("{}  transfer balance before :{}",credentials1.getAddress(),sendBalanceBefore);
         log.info("transfer  balance to new Account ");
         Credentials newAccount = CredentialsUtil.createAccount();
-        getGodwokenClient().transferCkb(credentials1,newAccount.getAddress(), Constant.ETHER.multiply(new BigInteger("10")));
+        getGodwokenClient().transferCkb(credentials1,newAccount.getAddress(), Constant.ETHER);
         BigInteger blanceForNewAccount = web3j.ethGetBalance(newAccount.getAddress(), DefaultBlockParameterName.PENDING).send().getBalance();
         log.info("new Account:{} Balance:{}",newAccount.getAddress(),blanceForNewAccount);
         log.info("new Account can transfer without register");

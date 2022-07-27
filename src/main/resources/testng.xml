@@ -13,12 +13,6 @@
                     <class name="com.tests.transferEoa.Demo" />
                 </classes>
             </test>
-
-            <test name="Unregistered account">
-                <classes>
-                    <class name="com.tests.transferEoa.CreateAccountFail" />
-                </classes>
-            </test>
         </tests>
     </suite>
 

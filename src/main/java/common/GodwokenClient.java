@@ -1,5 +1,6 @@
 package common;
 
+import constant.Constant;
 import contracts.GodwokenERC20;
 import model.GodwokenProperties;
 import model.Web3GasProvider;
@@ -7,6 +8,7 @@ import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.tx.RawTransactionManager;
+import org.web3j.tx.gas.ContractGasProvider;
 import utils.TransactionUtil;
 
 import java.math.BigInteger;
@@ -38,6 +40,7 @@ public class GodwokenClient {
         String ckbAddress = godwokenProperties.getCkbProxyAddress();
         RawTransactionManager rawTransactionManager = TransactionUtil.getTxManage(web3, credentialsArrays.get(0));
         if (ckbAddress.length() < 10) {
+            //
             godwokenERC20 = GodwokenERC20.deploy(web3, rawTransactionManager, new Web3GasProvider(web3)).send();
         } else {
             godwokenERC20 = GodwokenERC20.load(ckbAddress, web3, rawTransactionManager, new Web3GasProvider(web3));

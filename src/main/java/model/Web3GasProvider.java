@@ -15,7 +15,7 @@ public class Web3GasProvider implements ContractGasProvider {
 
     @Override
     public BigInteger getGasPrice(String s) {
-        return Constant.GAS_LIMIT;
+        return getGasPrice();
     }
 
     @Override

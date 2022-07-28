@@ -25,11 +25,12 @@ public class Demo extends Common {
         Web3j web3j = getGodwokenClient().getWeb3();
 
         Credentials credentials1 = getGodwokenClient().getCredentialsByIdx(0);
-        BigInteger sendBalanceBefore = web3j.ethGetBalance(credentials1.getAddress(),DefaultBlockParameterName.PENDING).send().getBalance();
+        BigInteger sendBalanceBefore = web3j.ethGetBalance(credentials1.getAddress(), DefaultBlockParameterName.PENDING).send().getBalance();
         log.info("{}  transfer balance before :{}",credentials1.getAddress(),sendBalanceBefore);
         log.info("transfer  balance to new Account ");
         Credentials newAccount = CredentialsUtil.createAccount();
-        getGodwokenClient().transferCkb(credentials1,newAccount.getAddress(), Constant.ETHER.multiply(new BigInteger("10")));
+        getGodwokenClient().transferCkb(credentials1,newAccount.getAddress(), Constant.ETHER);
+        getGodwokenClient().balanceOfckb(newAccount.getAddress());
         BigInteger blanceForNewAccount = web3j.ethGetBalance(newAccount.getAddress(), DefaultBlockParameterName.PENDING).send().getBalance();
         log.info("new Account:{} Balance:{}",newAccount.getAddress(),blanceForNewAccount);
         log.info("new Account can transfer without register");

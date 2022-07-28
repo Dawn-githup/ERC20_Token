@@ -10,7 +10,16 @@
             </groups>
             <test name="transferEOA">
                 <classes>
-                    <class name="com.tests.transferEoa.Demo" />
+                    <class name="com.tests.transferEoa.TransferSuccessful" />
+                </classes>
+                <classes>
+                    <class name="com.tests.transferEoa.SendTransactionTest" />
+                </classes>
+                <classes>
+                    <class name="com.tests.transferEoa.FailedToSendTransaction" />
+                </classes>
+                <classes>
+                    <class name="com.tests.transferEoa.CreateAccountFail" />
                 </classes>
             </test>
         </tests>

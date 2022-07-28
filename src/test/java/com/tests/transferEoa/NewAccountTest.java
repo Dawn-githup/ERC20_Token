@@ -22,7 +22,5 @@ public class NewAccountTest extends Common {
             Credentials newAccount = CredentialsUtil.createAccount();
             System.out.println("address:  " + newAccount.getAddress());
         }
-
-//        getGodwokenClient().transferCkb(credentials1,newAccount.getAddress(), Constant.ETHER);
     }
 }

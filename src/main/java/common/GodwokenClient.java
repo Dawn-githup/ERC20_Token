@@ -6,6 +6,7 @@ import model.GodwokenProperties;
 import model.Web3GasProvider;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.tx.RawTransactionManager;
 import org.web3j.tx.gas.ContractGasProvider;
@@ -77,8 +78,16 @@ public class GodwokenClient {
         try {
             godwokenERC20.transfer(to, value).send();
         } catch (Exception e) {
+            log.info("from id not found by from Address{...} have you deposited?");
 //            e.printStackTrace();
-            log.info("from id not found by from Address");
+        }
+    }
+
+    public void balanceOfckb(String amount) {
+        try {
+            godwokenERC20.balanceOf(amount);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
